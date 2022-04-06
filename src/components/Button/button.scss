@@ -1,0 +1,29 @@
+@import "../../assets/variables";
+
+button {
+  display: block;
+  font-size: 1rem;
+  font-family: Roboto, sans-serif;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid $fourth-color;
+  text-align: center;
+  transition: all .35s;
+  background: white;
+}
+
+button:hover{
+  color: inherit;
+  background: $fourth-color;
+}
+
+button:hover:after{
+  width: 100%;
+}
+
+.submit-form {
+  a{
+    color: $primary-color;
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../assets/main";
+
+.personal-id {
+  height: calc(#{$base-dimension} / #{$phi});
+  width: $base-dimension;
+  background: white;
+  border-radius: 1rem;
+  font-family: 'Inconsolata', monospace;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+}
+
+.person-image {
+  max-width: 60px;
+}
+
+.id-inputs {
+  width: 100%;
+}

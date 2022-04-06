@@ -1,0 +1,25 @@
+.front {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.chip {
+  width: 100%;
+  height: 50%;
+}
+
+.card-inputs {
+  height: 50%;
+}
+
+.card-chip {
+  width: 40px;
+}
+
+.card-brand {
+  width: 60px;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}

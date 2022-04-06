@@ -1,0 +1,17 @@
+@import "../../assets/variables";
+
+select {
+  background-color: transparent;
+  border: thin solid $fourth-color;
+  color: inherit;
+  border-width: 0 0 1px;
+  line-height: 1em;
+  padding: 5px;
+  height: auto !important;
+}
+
+select:focus {
+  border: thin solid $primary-color;
+  border-width: 0 0 1px;
+  outline: none;
+}

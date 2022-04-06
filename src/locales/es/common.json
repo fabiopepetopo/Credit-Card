@@ -1,0 +1,17 @@
+{
+  "cardNameLabel": "Nombre",
+  "cardNamePlaceHolder": "Nombre del titular de la tarjeta",
+  "cardNumberLabel": "Número de tárjeta",
+  "cardNumberPlaceHolder": "XXXX XXXX XXXX XXXX",
+  "cardThruLabel": "Vencimiento",
+  "cardThruPlaceHolder": "MM / AA",
+  "cvvLabel": "CVV",
+  "cvvPlaceHolder": "",
+  "personalTypeIdLabel": "Tipo de documento",
+  "personalIdLabel": "Número de documento",
+  "personalIdPlaceHolder": "XXXXXX",
+  "installmentsLabel": "Cuotas",
+  "submitLabel": "Pagar",
+  "cancelLabel": "Cancelar"
+}
+

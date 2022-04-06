@@ -1,0 +1,16 @@
+{
+  "cardNameLabel": "Name",
+  "cardNamePlaceHolder": "Name on card",
+  "cardNumberLabel": "Card number",
+  "cardNumberPlaceHolder": "XXXX XXXX XXXX XXXX",
+  "cardThruLabel": "Card Thru",
+  "cardThruPlaceHolder": "MM / YY",
+  "cvvLabel": "CVV",
+  "cvvPlaceHolder": "",
+  "personalTypeIdLabel": "Id Type",
+  "personalIdLabel": "Id number",
+  "personalIdPlaceHolder": "XXXXXX",
+  "installmentsLabel": "Installments",
+  "submitLabel": "Pay",
+  "cancelLabel": "Cancel"
+}

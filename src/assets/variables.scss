@@ -1,0 +1,14 @@
+:root {
+  --card-primary-color: rgb(26, 163, 175);
+  --card-secondary-color: rgba(248, 237, 204, 1);
+  --card-third-color: rgba(110, 186, 149, 1);
+  --card-fourth-color: rgba(215, 215, 158, 1);
+}
+
+$base-dimension: 300px;
+$base-color: rgb(97, 74, 217);
+$phi: 1.618034;
+$primary-color: var(--card-primary-color);
+$secondary-color: var(--card-secondary-color);
+$third-color: var(--card-third-color);
+$fourth-color:var(--card-fourth-color);
