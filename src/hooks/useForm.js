@@ -20,6 +20,7 @@ export const useForm = (context) => {
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
+    console.log("TEST");
     validateAll(cardFormValues);
 
     if (canSubmit) {
@@ -83,7 +84,6 @@ export const useForm = (context) => {
     handleChange,
     handleOnFocus,
     handleOnBlur,
-    handleSubmit,
   };
 
   const withEvents = (field) => {
@@ -152,5 +152,6 @@ export const useForm = (context) => {
     withEvents,
     withOptions,
     withPossibleErrors,
+    handleSubmit,
   };
 };
