@@ -3,11 +3,11 @@
 input {
   outline: 0;
   border-width: 0 0 1px;
-  border-color: $fourth-color;
+  border-color: $primary-color;
   line-height: 1rem;
   padding: 5px;
 }
 
 input:focus {
-  border-color: $primary-color;
+  border-color: $accent-color;
 }

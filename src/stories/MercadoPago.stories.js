@@ -17,10 +17,10 @@ export default {
     colors: {
       type: { name: "string", required: false },
       defaultValue: {
-        primaryColor: "#79b473",
-        secondaryColor: "#70a37f",
-        thirdColor: "#41658A",
-        fourthColor: "#414073",
+        primaryColor: "#d7d79e",
+        accentColor: "#1aa3af",
+        backgroundColor: "#ffffff",
+        textColor: "#4A4A75",
       },
       control: {
         type: "object",
@@ -29,7 +29,7 @@ export default {
   },
 };
 
-const MercadopagoIntegration = ({ api_key, colors }) => {
+const MercadopagoIntegration = ({ api_key }) => {
   const { paymentValues, setPaymentValues } = usePayment();
   const [showToken, setShowToken] = useState(false);
 
@@ -82,7 +82,6 @@ const MercadopagoIntegration = ({ api_key, colors }) => {
   const mpConfig = {
     callbacks: mpCallbacks,
     submit: mpSubmit,
-    colors: colors,
   };
   const amount = "14500.35";
 

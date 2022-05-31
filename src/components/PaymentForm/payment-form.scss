@@ -1,10 +1,11 @@
 @import "../../assets/main";
 
 .payment-form {
-  background: white;
+  background: $background-color;
   border-radius: 1rem;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
+  color: $text-color;
 }
 
 .field {
@@ -12,5 +13,5 @@
 }
 
 .id-shadow {
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  box-shadow: rgb(38, 57, 77) 0 20px 30px -10px;
 }
