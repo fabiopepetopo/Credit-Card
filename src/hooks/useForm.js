@@ -135,14 +135,15 @@ export const useForm = (context) => {
       config.callbacks.fetchBrand(cardNumber.substring(0, 6)).then((result) => {
         setBrand(result);
       });
-      config.callbacks
-        .fetchInstallments(cardNumber.substring(0, 6), amount)
-        .then((result) => {
-          setCardFormValues(() => ({
-            ...cardFormValues,
-            installmentsOptions: result,
-          }));
-        });
+      config?.callbacks?.fetchInstallments &&
+        config.callbacks
+          .fetchInstallments(cardNumber.substring(0, 6), amount)
+          .then((result) => {
+            setCardFormValues(() => ({
+              ...cardFormValues,
+              installmentsOptions: result,
+            }));
+          });
     }
   }, [cardFormValues.cardNumber]);
 

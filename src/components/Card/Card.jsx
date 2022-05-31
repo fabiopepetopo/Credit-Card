@@ -50,7 +50,7 @@ export const Card = ({ brand, cardFormValues }) => {
   };
 
   const styles = {
-    backgroundColor: brandsLogos[brand].background,
+    backgroundColor: brandsLogos[brand]?.background,
   };
 
   return (
