@@ -23,16 +23,19 @@ export const PaymentForm = () => {
     canSubmit,
   } = useForm(CardContext);
 
+  const randomKey = () => Math.random().toString(36).substr(2, 9);
+
   const buildInputType = (field) => {
     const eventField = withEvents(withPossibleErrors(field));
     if (field.type === "Select") {
       const selectField = withOptions(eventField);
-      return <Select {...selectField} />;
+      return <Select {...selectField} key={randomKey()} />;
     }
-    if (field.type === "Input") return <Input {...eventField} />;
+    if (field.type === "Input")
+      return <Input {...eventField} key={randomKey()} />;
     if (field.type === "InputGroup") {
       return (
-        <InputGroup>
+        <InputGroup key={randomKey()}>
           {field.fields.map((field) => buildInputType(field))}
         </InputGroup>
       );
