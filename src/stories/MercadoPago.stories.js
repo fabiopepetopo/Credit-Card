@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { CardForm, usePayment } from "../";
+import { MercadoPagoConfig } from "../helpers";
 
 export default {
   title: "Mercadopago",
@@ -37,52 +38,6 @@ const MercadopagoIntegration = ({ api_key }) => {
     locale: "es-AR",
     advancedFraudPrevention: true,
   });
-
-  const mpCallbacks = {
-    fetchBrand: async (bin) => {
-      if (bin.length < 6) {
-        return;
-      }
-
-      let result = await mp.getPaymentMethods({ bin: bin });
-
-      return result.results[0].id;
-    },
-    fetchInstallments: async (bin, amount) => {
-      if (bin.length < 6) {
-        return;
-      }
-      let result = await mp.getInstallments({
-        bin: bin,
-        amount: amount,
-      });
-
-      return result[0].payer_costs.map((element) => {
-        return {
-          label: element.recommended_message,
-          value: element.installments,
-        };
-      });
-    },
-  };
-
-  const mpSubmit = async (cardValues) => {
-    let monthAndYear = cardValues.cardThru.split("/");
-    return await mp.createCardToken({
-      cardNumber: cardValues.cardNumber.replace(/\s/g, ""),
-      cardholderName: cardValues.cardName,
-      cardExpirationMonth: monthAndYear[0],
-      cardExpirationYear: monthAndYear[1],
-      securityCode: cardValues.cvv,
-      identificationType: "DNI",
-      identificationNumber: cardValues.personalId,
-    });
-  };
-
-  const mpConfig = {
-    callbacks: mpCallbacks,
-    submit: mpSubmit,
-  };
   const amount = "14500.35";
 
   useEffect(() => {
@@ -95,7 +50,7 @@ const MercadopagoIntegration = ({ api_key }) => {
     <div className="box">{paymentValues?.token}</div>
   ) : (
     <CardForm
-      userConfig={mpConfig}
+      userConfig={MercadoPagoConfig(mp)}
       amount={amount}
       setPaymentValues={setPaymentValues}
     />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { CardForm, usePayment } from "../";
-import { Decidir } from "../helpers";
+import { Decidir, DecidirConfig } from "../helpers";
 
 export default {
   title: "Decidir",
@@ -35,39 +35,6 @@ const DecidirIntegration = ({ api_key }) => {
   const [showToken, setShowToken] = useState(false);
 
   const decidir = Decidir(api_key || "INSERT_YOUR_API_KEY");
-
-  const decidirCallbacks = {
-    fetchBrand: async (bin) => {
-      if (bin.length < 6) {
-        return;
-      }
-
-      let results = await decidir.getPaymentMethods(bin);
-      console.log(results);
-
-      return results[0].id;
-    },
-  };
-
-  const decidirSubmit = async (cardValues) => {
-    let monthAndYear = cardValues.cardThru.split("/");
-    return await decidir.createCardToken({
-      card_number: cardValues.cardNumber.replace(/\s/g, ""),
-      card_holder_name: cardValues.cardName,
-      card_expiration_month: monthAndYear[0],
-      card_expiration_year: monthAndYear[1],
-      security_code: cardValues.cvv,
-      card_holder_identification: {
-        type: "DNI",
-        number: cardValues.personalId,
-      },
-    });
-  };
-
-  const decidirConfig = {
-    callbacks: decidirCallbacks,
-    submit: decidirSubmit,
-  };
   const amount = "14500.35";
 
   useEffect(() => {
@@ -80,7 +47,7 @@ const DecidirIntegration = ({ api_key }) => {
     <div className="box">{paymentValues?.token}</div>
   ) : (
     <CardForm
-      userConfig={decidirConfig}
+      userConfig={DecidirConfig(decidir)}
       amount={amount}
       setPaymentValues={setPaymentValues}
     />

@@ -491,3 +491,33 @@ export const Decidir = (apiKey) => {
     },
   };
 };
+
+export const DecidirConfig = (decidir) => {
+  return {
+    callbacks: {
+      fetchBrand: async (bin) => {
+        if (bin.length < 6) {
+          return;
+        }
+        let results = await decidir.getPaymentMethods(bin);
+        console.log(results);
+
+        return results[0].id;
+      },
+    },
+    submit: async (cardValues) => {
+      let monthAndYear = cardValues.cardThru.split("/");
+      return await decidir.createCardToken({
+        card_number: cardValues.cardNumber.replace(/\s/g, ""),
+        card_holder_name: cardValues.cardName,
+        card_expiration_month: monthAndYear[0],
+        card_expiration_year: monthAndYear[1],
+        security_code: cardValues.cvv,
+        card_holder_identification: {
+          type: "DNI",
+          number: cardValues.personalId,
+        },
+      });
+    },
+  };
+};
