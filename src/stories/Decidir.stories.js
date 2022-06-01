@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 import { CardForm, usePayment } from "../";
-import { MercadoPagoConfig } from "../helpers";
+import { Decidir, DecidirConfig } from "../helpers";
 
 export default {
-  title: "Mercadopago",
-  component: MercadopagoIntegration,
+  title: "Decidir",
+  component: DecidirIntegration,
   argTypes: {
     api_key: {
       type: { name: "string", required: true },
@@ -30,14 +30,11 @@ export default {
   },
 };
 
-const MercadopagoIntegration = ({ api_key }) => {
+const DecidirIntegration = ({ api_key }) => {
   const { paymentValues, setPaymentValues } = usePayment();
   const [showToken, setShowToken] = useState(false);
 
-  const mp = new MercadoPago(api_key || "INSERT_YOUR_API_KEY", {
-    locale: "es-AR",
-    advancedFraudPrevention: true,
-  });
+  const decidir = Decidir(api_key || "INSERT_YOUR_API_KEY");
   const amount = "14500.35";
 
   useEffect(() => {
@@ -50,7 +47,7 @@ const MercadopagoIntegration = ({ api_key }) => {
     <div className="box">{paymentValues?.token}</div>
   ) : (
     <CardForm
-      userConfig={MercadoPagoConfig(mp)}
+      userConfig={DecidirConfig(decidir)}
       amount={amount}
       setPaymentValues={setPaymentValues}
     />
@@ -58,5 +55,5 @@ const MercadopagoIntegration = ({ api_key }) => {
 };
 
 export const Default = ({ api_key, colors }) => (
-  <MercadopagoIntegration api_key={api_key} colors={colors} />
+  <DecidirIntegration api_key={api_key} colors={colors} />
 );

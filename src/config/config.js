@@ -1,4 +1,4 @@
-let personalTypeIdOptions = [
+const personalTypeIdOptions = [
   { label: "DNI", value: "DNI" },
   { label: "CI", value: "Cédula" },
   { label: "LC", value: "L.C." },
@@ -13,6 +13,13 @@ const installmentsOptions = [
   { label: "12 cuotas", value: 12 },
   { label: "18 cuotas", value: 18 },
 ];
+
+const colors = {
+  primaryColor: "#d7d79e",
+  accentColor: "#1aa3af",
+  backgroundColor: "#ffffff",
+  textColor: "#4A4A75",
+};
 
 const formatters = {
   creditCardFormatter: (value) => {
@@ -188,8 +195,10 @@ const fields = [
 ];
 
 export const defaultConfig = {
+  colors: colors,
   fields: fields,
   validations: validations,
+  multiple: false,
   initialValues: {
     installmentsOptions,
     personalTypeIdOptions,
