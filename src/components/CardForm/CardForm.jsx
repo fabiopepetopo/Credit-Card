@@ -5,7 +5,7 @@ import "../../i18n";
 import { useEffect } from "react";
 
 export const CardForm = ({ userConfig, amount, setPaymentValues }) => {
-  const config = { ...userConfig, ...defaultConfig };
+  const config = { ...defaultConfig, ...userConfig };
 
   useEffect(() => {
     const root = document.documentElement;

@@ -10,7 +10,7 @@ export default {
     api_key: {
       type: { name: "string", required: true },
       defaultValue: "INSERT_YOUR_API_KEY",
-      description: "Find your fuckikng key, and paste it here",
+      description: "Find your fucking key, and paste it here",
       control: {
         type: "text",
       },
@@ -35,18 +35,6 @@ const DecidirIntegration = ({ api_key }) => {
   const [showToken, setShowToken] = useState(false);
 
   const decidir = Decidir(api_key || "INSERT_YOUR_API_KEY");
-
-  const dataForTest = {
-    card_number: "4507990000004905",
-    card_expiration_month: "08",
-    card_expiration_year: "24",
-    security_code: "123",
-    card_holder_name: "John Doe",
-    card_holder_identification: {
-      type: "dni",
-      number: "25123456",
-    },
-  };
 
   const decidirCallbacks = {
     fetchBrand: async (bin) => {

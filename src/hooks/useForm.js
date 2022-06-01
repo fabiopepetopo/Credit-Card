@@ -124,26 +124,58 @@ export const useForm = (context) => {
     return cardNumber.replace(/\s/g, "");
   };
 
+  const brandCallback = (cardNumber) => {
+    const callback = config.multiple
+      ? config.callbacks[cardFormValues.provider].fetchBrand
+      : config.callbacks.fetchBrand;
+    callback(cardNumber.substring(0, 6)).then((result) => {
+      setBrand(result);
+    });
+  };
+
+  const installmentCallback = (cardNumber) => {
+    const callback = config.multiple
+      ? config.callbacks[cardFormValues.provider].fetchInstallments
+      : config.callbacks.fetchInstallments;
+    callback &&
+      callback(cardNumber.substring(0, 6), amount).then((result) => {
+        setCardFormValues(() => ({
+          ...cardFormValues,
+          installmentsOptions: result,
+        }));
+      });
+  };
+
+  const getProvider = (cardNumber) => {
+    if (config.multiple) {
+      return config.provider(cardNumber);
+    }
+    return config.provider;
+  };
+
+  useEffect(() => {
+    const cardNumber = trimCard(cardFormValues?.cardNumber);
+    if (cardNumber && sendRequest) {
+      setSendRequest(false);
+      brandCallback(cardNumber);
+      installmentCallback(cardNumber);
+    }
+  }, [cardFormValues.provider]);
+
   useEffect(() => {
     const cardNumber = trimCard(cardFormValues?.cardNumber);
     if (cardNumber?.length < 6) {
       setSendRequest(true);
-      return;
+      setCardFormValues(() => ({
+        ...cardFormValues,
+        provider: null,
+      }));
     }
-    if (cardNumber && sendRequest) {
-      setSendRequest(false);
-      config.callbacks.fetchBrand(cardNumber.substring(0, 6)).then((result) => {
-        setBrand(result);
-      });
-      config?.callbacks?.fetchInstallments &&
-        config.callbacks
-          .fetchInstallments(cardNumber.substring(0, 6), amount)
-          .then((result) => {
-            setCardFormValues(() => ({
-              ...cardFormValues,
-              installmentsOptions: result,
-            }));
-          });
+    if (cardNumber?.length > 5) {
+      setCardFormValues(() => ({
+        ...cardFormValues,
+        provider: getProvider(cardNumber),
+      }));
     }
   }, [cardFormValues.cardNumber]);
 

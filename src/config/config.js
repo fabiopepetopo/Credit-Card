@@ -198,6 +198,7 @@ export const defaultConfig = {
   colors: colors,
   fields: fields,
   validations: validations,
+  multiple: false,
   initialValues: {
     installmentsOptions,
     personalTypeIdOptions,
