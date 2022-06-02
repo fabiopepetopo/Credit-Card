@@ -23,17 +23,19 @@ export const PaymentForm = () => {
     canSubmit,
   } = useForm(CardContext);
 
-  const buildInputType = (field) => {
+  const buildInputType = (field, index) => {
     const eventField = withEvents(withPossibleErrors(field));
     if (field.type === "Select") {
       const selectField = withOptions(eventField);
-      return <Select {...selectField} />;
+      return <Select {...selectField} key={index} />;
     }
-    if (field.type === "Input") return <Input {...eventField} />;
+    if (field.type === "Input") return <Input {...eventField} key={index} />;
     if (field.type === "InputGroup") {
       return (
-        <InputGroup>
-          {field.fields.map((field) => buildInputType(field))}
+        <InputGroup key={index}>
+          {field.fields.map((field, index) =>
+            buildInputType(field, `10${index}`)
+          )}
         </InputGroup>
       );
     }
@@ -42,7 +44,8 @@ export const PaymentForm = () => {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        {config && config.fields.map((field) => buildInputType(field))}
+        {config &&
+          config.fields.map((field, index) => buildInputType(field, index))}
 
         <ButtonGroup>
           <Button

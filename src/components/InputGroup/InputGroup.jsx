@@ -1,3 +1,4 @@
+import "./input-group.scss";
 export const InputGroup = ({ children }) => {
   return (
     <>

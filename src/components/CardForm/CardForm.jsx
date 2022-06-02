@@ -5,7 +5,7 @@ import "../../i18n";
 import { useEffect } from "react";
 
 export const CardForm = ({ userConfig, amount, setPaymentValues }) => {
-  const config = { ...userConfig, ...defaultConfig };
+  const config = { ...defaultConfig, ...userConfig };
 
   useEffect(() => {
     const root = document.documentElement;
@@ -13,12 +13,12 @@ export const CardForm = ({ userConfig, amount, setPaymentValues }) => {
       "--card-primary-color",
       config?.colors?.primaryColor
     );
+    root?.style.setProperty("--card-accent-color", config?.colors?.accentColor);
     root?.style.setProperty(
-      "--card-secondary-color",
-      config?.colors?.secondaryColor
+      "--card-background-color",
+      config?.colors?.backgroundColor
     );
-    root?.style.setProperty("--card-third-color", config?.colors?.thirdColor);
-    root?.style.setProperty("--card-fourth-color", config?.colors?.fourthColor);
+    root?.style.setProperty("--card-text-color", config?.colors?.textColor);
   }, [config.colors]);
 
   return (

@@ -3,6 +3,9 @@
   --card-secondary-color: rgba(248, 237, 204, 1);
   --card-third-color: rgba(110, 186, 149, 1);
   --card-fourth-color: rgba(215, 215, 158, 1);
+  --card-background-color: rgba(215, 215, 158, 1);
+  --card-text-color: #4A4A75;
+  --card-accent-color: #1aa3af;
 }
 
 $base-dimension: 300px;
@@ -12,3 +15,6 @@ $primary-color: var(--card-primary-color);
 $secondary-color: var(--card-secondary-color);
 $third-color: var(--card-third-color);
 $fourth-color:var(--card-fourth-color);
+$background-color:var(--card-background-color);
+$text-color:var(--card-text-color);
+$accent-color:var(--card-accent-color);
