@@ -21,17 +21,24 @@ export default [
       },
     ],
     plugins: [
+      external(),
       commonjs(),
       resolve(),
       postcss(),
       babel({
-        exclude: "node_modules/**",
-        presets: ["@babel/preset-react"],
+        presets: [
+          [
+            "@babel/preset-react",
+            {
+              runtime: "automatic",
+            },
+          ],
+        ],
+        exclude: "**/node_modules/**",
       }),
-      external(),
       image(),
       json(),
-      terser(),
+      // terser(),
     ],
   },
 ];

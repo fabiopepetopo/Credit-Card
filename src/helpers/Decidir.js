@@ -500,7 +500,6 @@ export const DecidirConfig = (decidir) => {
           return;
         }
         let results = await decidir.getPaymentMethods(bin);
-        console.log(results);
 
         return results[0].id;
       },

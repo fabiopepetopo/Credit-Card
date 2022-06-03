@@ -20,7 +20,6 @@ export const useForm = (context) => {
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-    console.log("TEST");
     validateAll(cardFormValues);
 
     if (canSubmit) {
@@ -61,6 +60,7 @@ export const useForm = (context) => {
 
   const handleOnBlur = (event) => {
     let newErrors = {};
+
     newErrors[event.target.id] = validate(
       event.target.id,
       event.target.value,
