@@ -1,7 +1,6 @@
 import "./idCard.scss";
 
 export const IdCard = ({ values, personImage }) => {
-  console.log(values);
   return (
     <>
       <div className="personal-id is-flex is-flex-direction-column is-justify-content-center is-align-items-start p-3">

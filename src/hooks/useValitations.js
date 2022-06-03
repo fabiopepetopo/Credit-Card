@@ -15,20 +15,21 @@ export const useValidations = (validations) => {
   };
 
   const validate = (field, value, validation) => {
+    const language = i18n.language.split("-")[0];
     let message = null;
 
     if (validation?.required?.value && !value) {
-      message = validation?.required?.message[i18n.language];
+      message = validation?.required?.message[language];
     }
 
     const pattern = validation?.pattern;
     if (!!value && pattern?.value && !RegExp(pattern.value).test(value)) {
-      message = pattern.message[i18n.language];
+      message = pattern.message[language];
     }
 
     const custom = validation?.custom;
     if (!!value && custom?.isValid && !custom.isValid(value)) {
-      message = custom.message[i18n.language];
+      message = custom.message[language];
     }
 
     return message;
